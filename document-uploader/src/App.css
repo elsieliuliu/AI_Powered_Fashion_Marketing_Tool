@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 30px 20px;
+  color: white;
+}
+
+.header-subtitle {
+  color: #b3b3b3;
+  margin-top: 0;
+}
+
+main {
+  flex: 1;
+  padding: 40px 20px;
+  background-color: #f5f5f5;
+}
+
+footer {
+  padding: 20px;
+  background-color: #282c34;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.disclaimer {
+  font-size: 0.8rem;
+  color: #b3b3b3;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  main {
+    padding: 20px 10px;
+  }
+
+  .App-header {
+    padding: 20px 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+}
