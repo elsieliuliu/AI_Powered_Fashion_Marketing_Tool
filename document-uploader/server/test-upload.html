@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PDF Upload Test</title>
+  </head>
+  <body>
+    <h1>PDF Upload Test</h1>
+
+    <form id="uploadForm">
+      <input type="file" id="pdfFile" accept=".pdf" />
+      <button type="submit">Upload</button>
+    </form>
+
+    <div id="result" style="margin-top: 20px; white-space: pre-wrap"></div>
+
+    <script>
+      document
+        .getElementById("uploadForm")
+        .addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const resultDiv = document.getElementById("result");
+          resultDiv.textContent = "Uploading...";
+
+          const fileInput = document.getElementById("pdfFile");
+          if (!fileInput.files.length) {
+            resultDiv.textContent = "Please select a file";
+            return;
+          }
+
+          const formData = new FormData();
+          formData.append("file", fileInput.files[0]);
+
+          try {
+            // Try both endpoints
+            let response;
+            try {
+              response = await fetch(
+                "http://localhost:5000/api/extract-pdf-text",
+                {
+                  method: "POST",
+                  body: formData,
+                }
+              );
+            } catch (e) {
+              response = await fetch(
+                "http://localhost:5000/api/extract-pdf-text-alt",
+                {
+                  method: "POST",
+                  body: formData,
+                }
+              );
+            }
+
+            const data = await response.json();
+
+            if (data.error) {
+              resultDiv.textContent = `Error: ${data.error}`;
+            } else {
+              resultDiv.textContent = `Success! Text extracted (${
+                data.text.length
+              } chars):\n\n${data.text.substring(0, 500)}...`;
+            }
+          } catch (error) {
+            resultDiv.textContent = `Error: ${error.message}`;
+          }
+        });
+    </script>
+  </body>
+</html>

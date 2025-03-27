@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Starting Server...</title>
+    <script>
+      // This is a simple script to help start the server
+      window.onload = function () {
+        // Try to run the server using a special protocol handler
+        try {
+          // This will only work if the user has set up a custom protocol handler
+          window.location.href =
+            "node-server://start?path=document-uploader/server/server.js";
+
+          document.getElementById("status").innerText =
+            "Server start request sent. Please check your terminal.";
+        } catch (e) {
+          document.getElementById("status").innerText =
+            "Failed to send server start request: " + e.message;
+        }
+
+        // Show manual instructions
+        document.getElementById("manual").style.display = "block";
+      };
+    </script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+      }
+      .instructions {
+        background-color: #f5f5f5;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      code {
+        background-color: #eee;
+        padding: 2px 5px;
+        border-radius: 3px;
+      }
+      h2 {
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Document Analyzer Server</h1>
+    <p id="status">Attempting to start server...</p>
+
+    <div id="manual" class="instructions" style="display: none">
+      <h2>Manual Server Start Instructions</h2>
+      <p>
+        If the automatic server start doesn't work, please follow these steps:
+      </p>
+      <ol>
+        <li>Open a terminal or command prompt</li>
+        <li>
+          Navigate to the server directory: <br /><code
+            >cd document-uploader/server</code
+          >
+        </li>
+        <li>Start the server: <br /><code>node server.js</code></li>
+        <li>
+          You should see a message showing which port the server is running on
+        </li>
+        <li>Return to the Document Analyzer and click "Check Server Status"</li>
+      </ol>
+    </div>
+
+    <div class="instructions">
+      <h2>Troubleshooting</h2>
+      <p>If you're having trouble connecting to the server:</p>
+      <ol>
+        <li>Make sure Node.js is installed on your computer</li>
+        <li>
+          Check that all required packages are installed: <br /><code
+            >npm install</code
+          >
+          in the server directory
+        </li>
+        <li>Check for any error messages in the terminal</li>
+        <li>Make sure no other application is using the same port</li>
+      </ol>
+    </div>
+
+    <p><a href="/">Return to Document Analyzer</a></p>
+  </body>
+</html>
