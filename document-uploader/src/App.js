@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>AI Document Analyzer for Social Media</h1>
+        <h1>AI-Powered Document Analyzer</h1>
         <p className="header-subtitle">
           Upload PDFs and generate engaging social media content
         </p>

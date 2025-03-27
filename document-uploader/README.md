@@ -1,3 +1,92 @@
+# Document Analysis Application
+
+This is a document analysis application for the Fashion project. It consists of a React-based frontend and a Node.js backend server.
+
+## Server Port Configuration
+
+The application has been updated to use a streamlined server port configuration system:
+
+### Server-side (Backend)
+
+The backend server uses a clear order of precedence for port configuration:
+
+1. `SERVER_PORT` environment variable (highest priority)
+2. `PORT` environment variable (second priority)
+3. Default port `64970` (fallback)
+
+The server automatically writes its port to:
+
+- `public/server-port.txt` (primary location)
+- `server-port.txt` (for backward compatibility)
+- `public/port-info.json` (with metadata like timestamp)
+
+See the [server README](./server/README.md) for more details.
+
+### Client-side (Frontend)
+
+The frontend has a robust port discovery mechanism with the following order:
+
+1. Checks `port-info.json` (most reliable)
+2. Checks `server-port.txt`
+3. Checks localStorage for previously saved port
+4. Tries default port (64970)
+5. Tries common ports (5000, 3000, etc.)
+
+If you need to manually set the port, use the "Set Port Manually" button in the UI.
+
+## Getting Started
+
+1. Install dependencies for both client and server:
+
+   ```bash
+   # Client dependencies
+   npm install
+
+   # Server dependencies
+   cd server
+   npm install
+   ```
+
+2. Start the server:
+
+   ```bash
+   cd server
+   npm start
+   ```
+
+3. Start the client:
+   ```bash
+   npm start
+   ```
+
+## Troubleshooting Port Issues
+
+If you're having trouble connecting to the server:
+
+1. Check the browser console for port detection logs
+2. Verify the server is running with `npm start` in the server directory
+3. Try setting the port manually using the UI button
+4. Start the server with a specific port:
+   ```bash
+   cd server
+   npm run start:default  # Uses port 64970
+   npm run start:3000     # Uses port 3000
+   npm run start:random   # Uses a random available port
+   ```
+
+## Development
+
+For development, you can use:
+
+```bash
+# Server with auto-reload
+cd server
+npm run start:dev
+
+# Client
+npm start
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
