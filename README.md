@@ -140,7 +140,3 @@ npm run start:dev
 cd document-uploader
 npm start
 ```
-
-## License 许可证
-
-[Specify your license information here]
