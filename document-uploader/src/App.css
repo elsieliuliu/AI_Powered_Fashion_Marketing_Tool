@@ -3,49 +3,84 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
 .App-header {
-  background-color: #282c34;
-  padding: 30px 20px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  padding: 40px 20px;
   color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.App-logo {
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+h1 {
+  font-weight: 300;
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  margin: 0;
+  font-family: "Playfair Display", serif;
 }
 
 .header-subtitle {
-  color: #b3b3b3;
-  margin-top: 0;
+  color: #e0e0e0;
+  margin-top: 10px;
+  font-weight: 300;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  font-family: "Cormorant Garamond", serif;
 }
 
 main {
   flex: 1;
-  padding: 40px 20px;
-  background-color: #f5f5f5;
+  padding: 60px 20px;
+  background-color: #f9f9f9;
+  position: relative;
+}
+
+main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #c9a977 0%, #e2c992 50%, #c9a977 100%);
 }
 
 footer {
-  padding: 20px;
-  background-color: #282c34;
+  padding: 30px 20px;
+  background-color: #1a1a1a;
   color: white;
   font-size: 0.9rem;
+  letter-spacing: 0.5px;
 }
 
 .disclaimer {
   font-size: 0.8rem;
   color: #b3b3b3;
-  margin-top: 5px;
+  margin-top: 10px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 768px) {
   main {
-    padding: 20px 10px;
+    padding: 40px 15px;
   }
 
   .App-header {
-    padding: 20px 10px;
+    padding: 30px 15px;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
